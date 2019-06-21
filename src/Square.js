@@ -26,13 +26,13 @@ class Square extends React.Component {
             //  if the value is -1, display a lose state (bomb)
             if (this.props.value === -1){
                 display = <img className = "bomb" src = {bomb} alt="bomb goes boom"/>
-                alert('You lose. Reset to play again.')
-                this.props.countdown('lose')
+                // alert('You lose. Reset to play again.')
+                this.props.countdown('You lose!')
                 // if the value is 1, display a win state (treasure)
             } else if (this.props.value === 1){
                 display = <img className = "treasure" src = {treasure} alt="treasure chest. u rich now"/>
-                alert('You win! Reset to play again.')
-                this.props.countdown('win')
+                // alert('You win! Reset to play again.')
+                this.props.countdown('You win!')
                 // else, display tree
             } else {
                 display = <img className = "tree" src = {tree} alt="tree. deez coconuts"/>

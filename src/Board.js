@@ -28,16 +28,17 @@ class Board extends React.Component {
         let { hiddenCounter } = this.state
         hiddenCounter--
         this.setState({hiddenCounter, trueCounter: hiddenCounter})
-        if (input === 'win' || input === 'lose'){
-            this.setState({ hiddenCounter: 0,trueCounter: hiddenCounter})
+        if (input === 'You win!' || input === 'You lose!'){
+            input = input + " Reset to play again."
+            this.setState({ hiddenCounter: 0,trueCounter: hiddenCounter, endGame: input})
         } else if ( hiddenCounter === 0){
-            alert('You lose! Out of time. Reset to play again.')
-            this.setState({ hiddenCounter, trueCounter: hiddenCounter })
+            var message = 'You lose! Out of time. Reset to play again.'
+            this.setState({ hiddenCounter, trueCounter: hiddenCounter, endGame: message })
         }
     }
 
     resetState = () => {
-        this.setState({arr: this.randomize(), playState: true, hiddenCounter: 5, reset: 1, trueCounter: 5})
+        this.setState({arr: this.randomize(), playState: true, hiddenCounter: 5, reset: 1, trueCounter: 5, endGame: ''})
     }
 
     endReset = () => {
@@ -49,7 +50,7 @@ class Board extends React.Component {
     render(){
         return (
             <div>
-                <h1 className = "Title"> Treasure Hunt </h1>
+                <h2 className = "Title"> 💰Treasure Hunt💰</h2>
                 <div className='backdrop'>
                     <div className='board' >
                         {this.state.arr.map((value, index) => {
@@ -64,6 +65,8 @@ class Board extends React.Component {
                         )}
                     </div>
                 </div>
+                <br/>
+                <div className = 'message'> {this.state.endGame} </div>
                 <br/>
                 <div> Number of tries left: {this.state.trueCounter} </div>
                 <br/>
