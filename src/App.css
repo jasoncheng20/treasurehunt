@@ -80,7 +80,9 @@
     font-family: Helvetica;
     color: #FFD700;
     font-size: 34px;
-    width: 300px
+    width: 300px;
+    background-color: rgb(15,26,48);
+    border-radius: 4px
 }
 
 .message {
